@@ -7,8 +7,8 @@ public class Main {
     static double balance;
 
     public static void main(String[] args) {
-        balance =
-                validateAmount(balance, getAmount());
+        balance = getBalance();
+        validateAmount(balance, getAmount());
     }
 
     private static double getBalance() {
@@ -24,11 +24,11 @@ public class Main {
 
     // Метод валідації наявних коштів
     private static void validateAmount(double balance, double withdrawal) {
-        if (withdrawal > ) {
+        if (withdrawal > balance) {
             try {
-                throw new ("Insufficient funds!");
+                throw new FundsException("Insufficient funds!");
             } catch (FundsException ex) {
-                System.out.println(.getMessage());
+                System.out.println(ex.getMessage());
             }
         } else {
             balance = getBalance(balance, withdrawal);
@@ -40,6 +40,6 @@ public class Main {
     // Метод розрахунку наявних коштів на рахунку
     // після зняття певної суми коштів
     private static double getBalance(double balance, double withdrawal) {
-        return balance - ;
+        return balance - withdrawal;
     }
 }
